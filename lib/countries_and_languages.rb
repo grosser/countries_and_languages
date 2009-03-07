@@ -1,7 +1,7 @@
 module CountriesAndLanguages
   def countries
     @@countries ||= {}
-    @@countries[I18n.locale] ||= I18nData.countries(I18n.locale.to_s.upcase).to_a.sort_by(&:first).map(&:reverse)
+    @@countries[I18n.locale] ||= I18nData.countries(I18n.locale.to_s.upcase).to_a.sort_by(&:last).map(&:reverse)
   end
 
   def country(country_code)
@@ -10,7 +10,7 @@ module CountriesAndLanguages
 
   def languages
     @@languages ||= {}
-    @@languages[I18n.locale] ||= I18nData.languages(I18n.locale.to_s.upcase).to_a.sort_by(&:first).map(&:reverse)
+    @@languages[I18n.locale] ||= I18nData.languages(I18n.locale.to_s.upcase).to_a.sort_by(&:last).map(&:reverse)
   end
 
   def language(language_code)

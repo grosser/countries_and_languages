@@ -26,7 +26,7 @@ describe CountriesAndLanguages do
 
     it "can use countries for a select tag" do
       select = h.select_tag('x',h.options_for_select(countries))
-      select.split("\n").last.should == %Q[<option value="ZW">Zimbabwe</option></select>]
+      select.split("\n").last.should == %Q[<option value=\"AX\">Åland Islands</option></select>]
     end
 
     it "can use languages for a select tag" do
