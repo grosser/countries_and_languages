@@ -34,6 +34,11 @@ describe CountriesAndLanguages do
     end
   end
 
+  it "sorts umlaut-aware" do
+    I18n.locale = :de
+    countries[1][0].should == 'Ägypten'
+  end
+
   describe :select_tag do
     def h
       ActionController::Base.helpers

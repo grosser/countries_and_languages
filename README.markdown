@@ -28,10 +28,6 @@ Setup
       config.gem "grosser-i18n_data", :lib => 'i18n_data', :version => '0.2.3', :source=>"http://gems.github.com/"
     end
 
-TODO
-====
- - Sort Ä after A / Ö after O
-
 Author
 ======
 Michael Grosser  

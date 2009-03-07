@@ -22,11 +22,19 @@ module CountriesAndLanguages
   end
 
   def clean_and_sort(data)
-    data = data.to_a.sort_by{|code,name| name}
+    data = data.to_a.sort_by{|code,name| convert_umlaut_to_base(name)}
     data.map!{|code,name|[clean_name(name),code]}
   end
 
   def clean_name(name)
     name.sub(/\s*[,;(].*/,'')
+  end
+
+  def convert_umlaut_to_base(input)
+    text = input.dup
+    %w[áäa ÁÄA óöo ÓÖO íi ÍI úüu ÚÜU ée ÉE ßs].each do |set|
+      text.gsub!(/[#{set[0..-2]}]/,set[-1..-1])
+    end
+    text
   end
 end
