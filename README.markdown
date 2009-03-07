@@ -30,7 +30,6 @@ Setup
 
 TODO
 ====
- - Cleanup, some languages have long (albeit political correct) names, maybe through i18n_data patch...
  - Sort Ä after A / Ö after O
 
 Author

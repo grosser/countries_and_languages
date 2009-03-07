@@ -1,6 +1,6 @@
 require File.expand_path("spec_helper", File.dirname(__FILE__))
 
-include CountriesAndLanguages
+include CountriesAndLanguages::Helpers
 
 describe CountriesAndLanguages do
   before do
@@ -16,6 +16,21 @@ describe CountriesAndLanguages do
 
     it "returns blank when not found" do
       send(method,'XC').should be_blank
+    end
+  end
+
+  describe 'clean names' do
+    it "removes everything in braces" do
+      country('va').should == 'Holy See'
+      language('IA').should == 'Interlingua'
+    end
+    it "removes everything behind comma" do
+      country('IR').should == 'Iran'
+      language('ND').should == 'Ndebele'
+    end
+    it "removes everything behind semicolon" do
+      language('nb').should == 'Bokmål'
+      language('ca').should == 'Catalan'
     end
   end
 
