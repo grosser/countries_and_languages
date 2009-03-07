@@ -39,6 +39,11 @@ describe CountriesAndLanguages do
     countries[1][0].should == 'Ägypten'
   end
 
+  it "removes -Sprache aditions (German only)" do
+    I18n.locale = :de
+    languages.rassoc('ZU')[0].should == "Zulu"
+  end
+
   describe :select_tag do
     def h
       ActionController::Base.helpers
@@ -46,7 +51,7 @@ describe CountriesAndLanguages do
 
     it "can use countries for a select tag" do
       select = h.select_tag('x',h.options_for_select(countries))
-      select.split("\n").last.should == %Q[<option value=\"AX\">Åland Islands</option></select>]
+      select.split("\n").last.should == %Q[<option value=\"ZW\">Zimbabwe</option></select>]
     end
 
     it "can use languages for a select tag" do

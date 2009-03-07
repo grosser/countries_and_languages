@@ -27,12 +27,13 @@ module CountriesAndLanguages
   end
 
   def clean_name(name)
-    name.sub(/\s*[,;(].*/,'')
+    name = name.sub(/\s*[,;(].*/,'')
+    name.sub(/-Sprache$/,'')
   end
 
   def convert_umlaut_to_base(input)
     text = input.dup
-    %w[áäa ÁÄA óöo ÓÖO íi ÍI úüu ÚÜU ée ÉE ßs].each do |set|
+    %w[áäa ÁÄÅA óöo ÓÖO íi ÍI úüu ÚÜU ée ÉE ßs].each do |set|
       text.gsub!(/[#{set[0..-2]}]/,set[-1..-1])
     end
     text
