@@ -1,12 +1,17 @@
 Countries and languages in I18n.locale
 ======================================
-From within views, in currently 85 languages supplied by (I18nData)[http://github.com/grosser/i18n_data].  
-Languages and countries are stored as iso 639/iso 3166 - 2 letter code.
+In currently 85 languages supplied by [I18nData](http://github.com/grosser/i18n_data).  
+Languages and countries are stored as iso 639/iso 3166 - 2 letter code.  
+Methods are available in views.
+
+    @user.country == 'de'
+    @user.language == 'de'
 
     User is from <%=country(@user.country)%> and speaks <%=language(@user.language)%>
     User is from Germany and speaks German.
+
     Please select you language <%=f.select_tag(:language,options_for_select(languages))%>
-    Select box with all 185 languages.
+    Select box with all 185 localized languages.
 
 If you have special needs like renaming countries or only displaying a subset,
 have a look at the code and overwrite as necessary.
