@@ -39,9 +39,19 @@ describe CountriesAndLanguages do
     countries[1][0].should == 'Ägypten'
   end
 
-  it "removes -Sprache aditions (German only)" do
-    I18n.locale = :de
-    languages.rassoc('ZU')[0].should == "Zulu"
+  describe 'misc fixes' do
+    describe 'German' do
+      before {I18n.locale = :de}
+      it "removes -Sprache aditions" do
+        language('ZU').should == "Zulu"
+      end
+      it "knows Kongo" do
+        country('CD').should == 'Kongo'
+      end
+      it "knows Lao" do
+        country('LA').should == 'Lao'
+      end
+    end
   end
 
   describe :select_tag do

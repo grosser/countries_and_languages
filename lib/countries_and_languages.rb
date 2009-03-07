@@ -27,8 +27,15 @@ module CountriesAndLanguages
   end
 
   def clean_name(name)
+    #General fixes
     name = name.sub(/\s*[,;(].*/,'')
-    name.sub(/-Sprache$/,'')
+
+    #German fixes
+    name.sub!(/-Sprache$/,'')
+    name.sub!(/ Peoples Democratic Republics Democratic Republic/,'')#Lao
+    name.sub!(/Demokratische Republik /,'')#Congo
+
+    name
   end
 
   def convert_umlaut_to_base(input)
