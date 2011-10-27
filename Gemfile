@@ -1,10 +1,9 @@
 source :rubygems
-
-gem 'activesupport'
-gem 'actionpack'
-gem 'i18n_data'
+gemspec
 
 group :dev do
+  gem 'activesupport'
+  gem 'actionpack'
   gem 'rake'
   gem 'rspec', '~>2'
 end

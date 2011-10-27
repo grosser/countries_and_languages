@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    countries_and_languages (0.1.0)
+      i18n_data
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -54,6 +60,6 @@ PLATFORMS
 DEPENDENCIES
   actionpack
   activesupport
-  i18n_data
+  countries_and_languages!
   rake
   rspec (~> 2)
