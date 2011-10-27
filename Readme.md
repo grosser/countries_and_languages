@@ -24,6 +24,9 @@ Install
 As Gem
 
     gem install countries_and_languages
+    
+    # Gemfile
+    gem 'countries_and_languages', :require => 'countries_and_languages/rails'
 
 As Rails Plugin    
 
