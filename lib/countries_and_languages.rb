@@ -1,4 +1,6 @@
 # encoding: UTF-8
+require 'i18n_data'
+
 module CountriesAndLanguages
   extend self
 
