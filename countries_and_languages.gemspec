@@ -8,5 +8,6 @@ Gem::Specification.new name, CountriesAndLanguages::VERSION do |s|
   s.email = "michael@grosser.it"
   s.homepage = "http://github.com/grosser/#{name}"
   s.files = `git ls-files`.split("\n")
-  s.add_dependency 'i18n_data'
+  s.add_runtime_dependency 'i18n_data'
+  s.license = "MIT"
 end
