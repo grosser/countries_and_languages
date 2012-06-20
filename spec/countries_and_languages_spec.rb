@@ -1,9 +1,9 @@
 # encoding: UTF-8
-require File.expand_path("spec_helper", File.dirname(__FILE__))
-
-include CountriesAndLanguages::Helpers
+require "spec_helper"
 
 describe CountriesAndLanguages do
+  include CountriesAndLanguages::Helpers
+
   before do
     I18n.locale = :en
   end
