@@ -8,7 +8,10 @@ describe CountriesAndLanguages do
     I18n.locale = :en
   end
 
-  {:country=>['Germany','Deutschland'],:language=>['German','Deutsch']}.each do |method,translation|
+  {
+    :country => ['Germany','Deutschland'],
+    :language => ['German','Deutsch']
+  }.each do |method,translation|
     it "translates #{method}" do
       send(method,'DE').should == translation[0]
       I18n.locale = :de
@@ -20,15 +23,17 @@ describe CountriesAndLanguages do
     end
   end
 
-  describe 'clean names' do
+  describe "clean names" do
     it "removes everything in braces" do
       country('va').should == 'Holy See'
       language('IA').should == 'Interlingua'
     end
+
     it "removes everything behind comma" do
       country('IR').should == 'Iran'
       language('ND').should == 'Ndebele'
     end
+
     it "removes everything behind semicolon" do
       language('nb').should == 'Bokmål'
       language('ca').should == 'Catalan'
@@ -40,22 +45,25 @@ describe CountriesAndLanguages do
     countries[1][0].should == 'Ägypten'
   end
 
-  describe 'misc fixes' do
-    describe 'German' do
+  describe "misc fixes" do
+    describe "German" do
       before {I18n.locale = :de}
+
       it "removes -Sprache aditions" do
         language('ZU').should == "Zulu"
       end
+
       it "knows Kongo" do
         country('CD').should == 'Kongo'
       end
+
       it "knows Lao" do
         country('LA').should == 'Lao'
       end
     end
   end
 
-  describe :select_tag do
+  describe "#select_tag" do
     def h
       ActionController::Base.helpers
     end
