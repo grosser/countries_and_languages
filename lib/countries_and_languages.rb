@@ -56,9 +56,18 @@ module CountriesAndLanguages
     ['ß', 's'],
   ]
 
+  RUBY_18 = RUBY_VERSION < "1.9"
+
   def convert_umlaut_to_base(input)
     input = input.dup
-    CONVERSIONS.each { |from, to| input.tr!(from, to) }
+    if RUBY_18
+      old = $KCODE
+      $KCODE='u'
+      CONVERSIONS.each { |from, to| input.gsub!(/[#{from}]/, to) }
+      $KCODE = old
+    else
+      CONVERSIONS.each { |from, to| input.tr!(from, to) }
+    end
     input
   end
 end
