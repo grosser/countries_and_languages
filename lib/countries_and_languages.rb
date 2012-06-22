@@ -11,7 +11,7 @@ module CountriesAndLanguages
     end
 
     def country(country_code)
-      countries.rassoc(country_code.to_s.upcase)[0] rescue ''
+      (countries.rassoc(country_code.to_s.upcase) || [''])[0]
     end
 
     def languages
@@ -20,7 +20,7 @@ module CountriesAndLanguages
     end
 
     def language(language_code)
-      languages.rassoc(language_code.to_s.upcase)[0] rescue ''
+      (languages.rassoc(language_code.to_s.upcase) || [''])[0]
     end
   end
 

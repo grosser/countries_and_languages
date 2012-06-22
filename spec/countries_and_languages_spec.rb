@@ -19,7 +19,7 @@ describe CountriesAndLanguages do
     end
 
     it "returns blank when not found" do
-      send(method,'XC').should be_blank
+      send(method,'XC').should == ''
     end
   end
 
