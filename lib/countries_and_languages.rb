@@ -2,8 +2,6 @@
 require 'i18n_data'
 
 module CountriesAndLanguages
-  extend self
-
   module Helpers
     def countries
       @@countries ||= {}
@@ -24,13 +22,13 @@ module CountriesAndLanguages
     end
   end
 
-  def clean_and_sort(data)
+  def self.clean_and_sort(data)
     data = data.to_a
     data.map!{|code,name| [clean_name(name), code] }
-    data.sort_by{|code,name| convert_umlaut_to_base(code) }
+    data.sort_by{|code,_| convert_umlaut_to_base(code) }
   end
 
-  def clean_name(name)
+  def self.clean_name(name)
     #General fixes
     name = name.sub(/\s*[,;(].*/,'')
 
@@ -58,7 +56,7 @@ module CountriesAndLanguages
 
   RUBY_18 = RUBY_VERSION < "1.9"
 
-  def convert_umlaut_to_base(input)
+  def self.convert_umlaut_to_base(input)
     input = input.dup
     if RUBY_18
       old = $KCODE
