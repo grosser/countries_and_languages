@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    countries_and_languages (0.1.6)
+    countries_and_languages (0.2.0)
       i18n_data
 
 GEM
