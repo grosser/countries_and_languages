@@ -1,3 +1,3 @@
 module CountriesAndLanguages
-  VERSION = Version = '0.1.5'
+  VERSION = Version = '0.1.6'
 end
