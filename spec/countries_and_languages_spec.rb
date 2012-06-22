@@ -42,7 +42,7 @@ describe CountriesAndLanguages do
 
   it "sorts umlaut-aware" do
     I18n.locale = :de
-    countries[1][0].should == 'Ägypten'
+    countries.map(&:first)[0..5].should == ["Afghanistan", "Ägypten", "Åland-Inseln", "Albanien", "Algerien", "Amerikanische Jungferninseln"]
   end
 
   describe "misc fixes" do

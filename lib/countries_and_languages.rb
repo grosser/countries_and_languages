@@ -25,8 +25,9 @@ module CountriesAndLanguages
   end
 
   def clean_and_sort(data)
-    data = data.to_a.sort_by{|code,name| convert_umlaut_to_base(name)}
-    data.map!{|code,name|[clean_name(name),code]}
+    data = data.to_a
+    data.map!{|code,name| [clean_name(name), code] }
+    data.sort_by{|code,name| convert_umlaut_to_base(code) }
   end
 
   def clean_name(name)
@@ -41,11 +42,23 @@ module CountriesAndLanguages
     name
   end
 
+  CONVERSIONS = [
+    ['áä', 'a'],
+    ['ÁÄÅ', 'A'],
+    ['óö', 'o'],
+    ['ÓÖ', 'O'],
+    ['í', 'i'],
+    ['Í', 'I'],
+    ['úü', 'u'],
+    ['ÚÜ', 'U'],
+    ['é', 'e'],
+    ['É', 'E'],
+    ['ß', 's'],
+  ]
+
   def convert_umlaut_to_base(input)
-    $KCODE='u' if RUBY_VERSION < '1.9'
-    %w(aáä AÁÄÅ oóö OÓÖ ií IÍ uúü UÚÜ eé EÉ sß).inject(input.dup) do |input, set|
-      to, *from = set.split('')
-      input.gsub(/[#{from}]/, to)
-    end
+    input = input.dup
+    CONVERSIONS.each { |from, to| input.tr!(from, to) }
+    input
   end
 end
